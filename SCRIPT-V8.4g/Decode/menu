@@ -114,7 +114,7 @@ SCPidioma="${SCPdir}/idioma"
 local LINGUAGE=$(cat ${SCPidioma})
 [[ -z $LINGUAGE ]] && LINGUAGE=es
 [[ $LINGUAGE = "es" ]] && echo "$@" && return
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/ryky68szhqhi48e/trans &> /dev/null
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/ryky68szhqhi48e/trans1 &> /dev/null
 [[ ! -e /etc/VPS-MX/texto-mx ]] && touch /etc/VPS-MX/texto-mx
 source /etc/VPS-MX/texto-mx
 if [[ -z "$(echo ${texto[$@]})" ]]; then
@@ -128,7 +128,7 @@ echo "${texto[$@]}"
 fi
 }
 function_verify () {
-  permited=$(curl -sSL "https://www.dropbox.com/s/bg8bpaefxq9s5jl/Control-IP")
+  permited=$(curl -sSL "https://www.dropbox.com/s/bg8bpaefxq9s5jl/Control-IP1")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
   echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n                 CONATACTE A @Kalix1\n————————————————————————————————————————————————————\n\n\n"
@@ -136,7 +136,7 @@ function_verify () {
   exit 1
   } || {
   ### INTALAR VERSION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/VPS-MX/VPS-MX_Oficial/master/Version")
+  v1=$(curl -sSL "https://raw.githubusercontent.com/VPS-MX/VPS-MX_Oficial/master/Version1")
   echo "$v1" > /etc/versin_script
   }
 }
@@ -874,7 +874,6 @@ msg -tit
 echo -ne " \033[1;93m          CREDITOS Y REGISTRO DE CAMBIOS\n"
 msg -bar
 [[ -e ${SCPdir}/message.txt ]] && msg -bra " RESELLER AUTORIZADO: \n\033[1;96m $(cat ${SCPdir}/message.txt) "
-[[ -e ${SCPdir}/key.txt ]] && msg -bra " KEY DE REGISTRO:\n \033[1;93m $(cat ${SCPdir}/key.txt)"
 msg -bar
 echo -ne "\033[1;97m        CAMBIOS DE LA VERSION 8.3\n"
 echo -ne " - Compatible con Ubuntu's 14,16,18,20\n"
