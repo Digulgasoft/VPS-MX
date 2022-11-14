@@ -170,6 +170,22 @@ msg -bar2 && msg -verm "ERROR entre VPS<-->GENERADOR (Port 81 TCP)" && msg -bar2
 exit 1
 }
 
+}
+while [[ ! $Key ]]; do
+clear
+clear
+msg -bar
+msg -tit
+echo -e "\033[1;91m      ACTULIZAR FICHEROS DEL SCRIPT VPS-MX"
+msg -bar2 && msg -ne "\033[1;93m          >>> INTRODUZCA LA KEY ABAJO <<<\n   \033[1;37m" && read Key
+tput cuu1 && tput dl1
+done
+   }
+
+sleep 1s
+function_verify
+updatedb
+
 
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Invalido!") ]]; then
    msg -bar2
